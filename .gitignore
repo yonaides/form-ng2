@@ -1,6 +1,10 @@
 # Logs
 logs
 *.log
+<<<<<<< HEAD
+=======
+npm-debug.log*
+>>>>>>> b9f6ab3d8c887d76c3d3cbb888262b716bc52df7
 
 # Runtime data
 pids
@@ -13,6 +17,7 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+<<<<<<< HEAD
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
@@ -49,3 +54,26 @@ gulpfile.js.map
 
 # OS X trash files
 .DS_Store
+=======
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules
+jspm_packages
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+>>>>>>> b9f6ab3d8c887d76c3d3cbb888262b716bc52df7
