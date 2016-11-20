@@ -20,8 +20,12 @@ export class AppComponent {
       email:'',
       notificacion:'No',
       telefonosDT:this.fb.group({
-        
-
+        tipo:'',
+        telefono:''
+      }),
+      direccionesDT:this.fb.group({
+        tipo:'',
+        direccion:''
       })
         
     });
