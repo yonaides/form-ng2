@@ -1,3 +1,21 @@
 <h1>
-  {{title}}
+    {{title}}
+
+    <form novalidate [formGroup]="form">
+
+        <input formControlName="nombre" placeholder="First" [(ngModel)]="form.nombre">
+        <input formControlName="apellido" placeholder="Last" [(ngModel)]="form.apellido">
+        <input formControlName="cedula" placeholder="cedula">
+
+        <input type="radio" value="Si" formControlName="notificacion"> Si
+        <input type="radio" value="No" formControlName="notificacion"> No
+        <input formControlName="email" placeholder="Email">
+        <button>Submit</button>
+        <button (click)="setValores()">SetValues</button>
+
+
+    </form>
+    <p>Value: {{ form.value | json }}</p>
+    <p>Validation status: {{ form.status }}</p>
+
 </h1>
