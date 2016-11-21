@@ -1,6 +1,8 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
-
+import {ITelefonos} from './telefono.interface';
+import {IDirecciones} from './direccion.interface';
+import {IPersona} from './persona.interface';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +10,26 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
-  title = 'Formularios en AngularJS';
-  form: FormGroup;
+export class AppComponent implements OnInit {
+  public title = 'Formularios en AngularJS 2 Final';
+  public form: FormGroup;
+  public telefonos:ITelefonos[]=[];
+  public direcciones:IDirecciones[]=[];
+  public personas:IPersona[]=[];
+
+
+ngOnInit(){
+   var telefono1:ITelefonos= {tipo:"Casa", telefono:'256555'};
+   var telefono2:ITelefonos= {tipo:"Privado", telefono:'5464'};
+   console.log(telefono1);
+
+   this.telefonos.push(telefono1);
+   this.telefonos.push(telefono2);
+
+
+
+  }
+
 
   constructor( public fb: FormBuilder) {
     this.form = this.fb.group({
@@ -41,6 +60,7 @@ console.log('formularios', this.form.controls);
   this.form.controls['notificacion'].setValue('');
 
 
+
 }
 
 public reset():void{
@@ -48,12 +68,26 @@ public reset():void{
 }
 
 
-public setAddTelefonos():void{
+public addTelefonos(modelo, valid):void{
 
+  this.telefonos.push(modelo.telefonosDT);
 
+  this.form.controls['telefonosDT'].setValue({tipo:'Tipo', telefono:''});
+  console.log('valores ', modelo);
+  console.log('valores telefonosDT', modelo.telefonosDT);
+  console.log('valores direccionDT', modelo.direccionDT);
+  console.log('valid ', valid);
+
+  //telefono.push(value);
 
 
 }
+
+
+public addDireccion(value):void{
+
+}
+
 
 
 

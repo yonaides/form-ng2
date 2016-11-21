@@ -1,21 +1,69 @@
 <h1>
     {{title}}
+</h1>
 
+<div class="container">
     <form novalidate [formGroup]="form">
 
-        <input formControlName="nombre" placeholder="First" [(ngModel)]="form.nombre">
-        <input formControlName="apellido" placeholder="Last" [(ngModel)]="form.apellido">
-        <input formControlName="cedula" placeholder="cedula">
+        <input type="text" formControlName="nombre" placeholder="First" [(ngModel)]="form.nombre">
+        <input type="text" formControlName="apellido" placeholder="Last" [(ngModel)]="form.apellido">
+        <input type="text" formControlName="cedula" placeholder="cedula" [(ngModel)]="form.cedula">
 
         <input type="radio" value="Si" formControlName="notificacion"> Si
         <input type="radio" value="No" formControlName="notificacion"> No
-        <input formControlName="email" placeholder="Email">
+        <input formControlName="email" placeholder="Email" [(ngModel)]="form.email">
+
+        <div formGroupName="telefonosDT">
+            <p>Agregar telefonos</p>
+            <input type="text" formControlName="tipo" placeholder="Tipo" [(ngModel)]="tipo">
+            <input type="text" formControlName="telefono" placeholder="Telefono" [(ngModel)]="telefono">
+
+            <button (click)="addTelefonos(form.value, form.valid)">Add Telefono</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Telefono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tel of telefonos">
+                        <td>{{tel.tipo}}</td>
+                        <td>{{tel.telefono}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <div formGroupName="direccionesDT">
+            <p>Agregar Direcciones</p>
+            <input type="text" formControlName="tipo" placeholder="Tipo" [(ngModel)]="tipo">
+            <input type="text" formControlName="direccion" placeholder="Direccion" [(ngModel)]="direccion">
+
+            <button (click)="addDireccion(form)">Add Direccion</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Direccion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dir of direcciones">
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+
         <button>Submit</button>
         <button (click)="setValores()">SetValues</button>
-
 
     </form>
     <p>Value: {{ form.value | json }}</p>
     <p>Validation status: {{ form.status }}</p>
-
-</h1>
+</div>
