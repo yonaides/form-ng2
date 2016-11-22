@@ -3,22 +3,37 @@
 </h1>
 
 <div class="container">
-    <form novalidate [formGroup]="form">
+    <form novalidate [formGroup]="form" class="form-horizontal">
 
-        <input type="text" formControlName="nombre" placeholder="First" [(ngModel)]="form.nombre">
-        <input type="text" formControlName="apellido" placeholder="Last" [(ngModel)]="form.apellido">
-        <input type="text" formControlName="cedula" placeholder="cedula" [(ngModel)]="form.cedula">
 
-        <input type="radio" value="Si" formControlName="notificacion"> Si
-        <input type="radio" value="No" formControlName="notificacion"> No
-        <input formControlName="email" placeholder="Email" [(ngModel)]="form.email">
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="text">Datos personales</label>
+            <div class="col-md-8">
+                <input type="text" formControlName="nombre" placeholder="First" [(ngModel)]="form.nombre">
+                <input type="text" formControlName="apellido" placeholder="Last" [(ngModel)]="form.apellido">
+                <input type="text" formControlName="cedula" placeholder="cedula" [(ngModel)]="form.cedula">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="text">Correo</label>
+            <div class="col-md-8">
+                <input type="radio" value="Si" formControlName="notificacion"> Si
+                <input type="radio" value="No" formControlName="notificacion"> No
+                <input formControlName="email" placeholder="Email" [(ngModel)]="form.email">
+            </div>
+        </div>
+
+
 
         <div formGroupName="telefonosDT">
             <p>Agregar telefonos</p>
             <input type="text" formControlName="tipo" placeholder="Tipo" [(ngModel)]="tipo">
             <input type="text" formControlName="telefono" placeholder="Telefono" [(ngModel)]="telefono">
 
-            <button (click)="addTelefonos(form.value, form.valid)">Add Telefono</button>
+            <button (click)="addTelefonos(form.value, form.valid)" class="btn btn-success">Add Telefono</button>
+
+
             <table class="table">
                 <thead>
                     <tr>
