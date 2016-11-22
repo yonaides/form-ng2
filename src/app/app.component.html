@@ -39,12 +39,18 @@
                     <tr>
                         <th>Tipo</th>
                         <th>Telefono</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let tel of telefonos">
+                    <tr *ngFor="let tel of telefonos let i= index">
                         <td>{{tel.tipo}}</td>
                         <td>{{tel.telefono}}</td>
+                        <td>
+                            <a href="#" (click)="setEditPhone(i)"> <span class="glyphicon glyphicon-edit"></span> </a> </td>
+                        <td>
+                            <a href="#" (click)="setDeletePhone(i)"> <span class="glyphicon glyphicon-remove-circle"></span> </a> </td>
                     </tr>
                 </tbody>
             </table>

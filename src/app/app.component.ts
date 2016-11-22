@@ -68,9 +68,31 @@ public reset():void{
 }
 
 
+
+public getTelefonoIndex(tipoTel:string ){
+
+
+
+
+}
+
+
+
 public addTelefonos(modelo, valid):void{
 
-  this.telefonos.push(modelo.telefonosDT);
+  var i = this.telefonos.map(function(x) {return x.tipo}).indexOf(modelo.telefonosDT.tipo);
+    
+  console.log("index a modificar ", i);
+  console.log("tipo telefono " , modelo.telefonosDT.tipo) ;
+  console.log("telefonos de la lista " , this.telefonos); 
+
+  if (i != -1){
+    this.telefonos[i].telefono = modelo.telefonosDT.telefono;
+  }else {
+    this.telefonos.push(modelo.telefonosDT);
+  }
+  
+
 
   this.form.controls['telefonosDT'].setValue({tipo:'Tipo', telefono:''});
   console.log('valores ', modelo);
@@ -80,8 +102,23 @@ public addTelefonos(modelo, valid):void{
 
   //telefono.push(value);
 
+}
+
+public setEditPhone(i):void{
+console.log("Editando el index ", i);
+this.form.controls['telefonosDT'].setValue({tipo:this.telefonos[i].tipo, telefono:this.telefonos[i].telefono});
+
 
 }
+
+
+public setDeletePhone(i):void{
+  console.log("borrando el index " , i);
+  this.telefonos.splice(i,1);
+
+}
+
+
 
 
 public addDireccion(value):void{
