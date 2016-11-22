@@ -21,11 +21,15 @@ export class AppComponent implements OnInit {
 ngOnInit(){
    var telefono1:ITelefonos= {tipo:"Casa", telefono:'256555'};
    var telefono2:ITelefonos= {tipo:"Privado", telefono:'5464'};
-   console.log(telefono1);
 
    this.telefonos.push(telefono1);
    this.telefonos.push(telefono2);
 
+var direccion1:IDirecciones={tipo:"Casa", direccion:'direccion de mi casa'};
+var direccion2:IDirecciones={tipo:"Trabajo", direccion:'direccion del trabajo'};
+
+this.direcciones.push(direccion1);
+this.direcciones.push(direccion2);
 
 
   }
@@ -93,14 +97,12 @@ public addTelefonos(modelo, valid):void{
   }
   
 
-
   this.form.controls['telefonosDT'].setValue({tipo:'Tipo', telefono:''});
   console.log('valores ', modelo);
   console.log('valores telefonosDT', modelo.telefonosDT);
   console.log('valores direccionDT', modelo.direccionDT);
   console.log('valid ', valid);
 
-  //telefono.push(value);
 
 }
 
@@ -111,7 +113,6 @@ this.form.controls['telefonosDT'].setValue({tipo:this.telefonos[i].tipo, telefon
 
 }
 
-
 public setDeletePhone(i):void{
   console.log("borrando el index " , i);
   this.telefonos.splice(i,1);
@@ -120,12 +121,47 @@ public setDeletePhone(i):void{
 
 
 
+public addDireccion(modelo, valid):void{
 
-public addDireccion(value):void{
+
+var i = this.direcciones.map(function(x) {return x.tipo}).indexOf(modelo.direccionesDT.tipo);
+    
+  console.log("index a modificar ", i);
+  console.log("tipo direccion " , modelo.direccionesDT.tipo) ;
+  console.log("direcciones de la lista " , this.direcciones); 
+
+  if (i != -1){
+    this.direcciones[i].direccion = modelo.direccionesDT.direccion;
+  }else {
+    this.direcciones.push(modelo.direccionesDT);
+  }
+  
+
+  this.form.controls['direccionesDT'].setValue({tipo:'Tipo', direccion:''});
+  console.log('valores ', modelo);
+  console.log('valores direccionesDT', modelo.direccionesDT);
+  console.log('valores TelefonosDT', modelo.telefonosDT);
+  console.log('valid ', valid);
+
 
 }
 
 
+public setEditDireccion(i):void{
+
+console.log("Editando el index ", i);
+this.form.controls['direccionesDT'].setValue({tipo:this.direcciones[i].tipo, direccion:this.direcciones[i].direccion});
+
+
+}
+
+
+public setDeleteDireccion(i):void{
+  console.log("borrando el index " , i);
+  this.direcciones.splice(i,1);
+
+  
+}
 
 
 }

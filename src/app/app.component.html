@@ -28,7 +28,7 @@
 
         <div formGroupName="telefonosDT">
             <p>Agregar telefonos</p>
-            <input type="text" formControlName="tipo" placeholder="Tipo" [(ngModel)]="tipo">
+            <input type="text" formControlName="tipo" placeholder="Tipo">
             <input type="text" formControlName="telefono" placeholder="Telefono" [(ngModel)]="telefono">
 
             <button (click)="addTelefonos(form.value, form.valid)" class="btn btn-success">Add Telefono</button>
@@ -48,9 +48,11 @@
                         <td>{{tel.tipo}}</td>
                         <td>{{tel.telefono}}</td>
                         <td>
-                            <a href="#" (click)="setEditPhone(i)"> <span class="glyphicon glyphicon-edit"></span> </a> </td>
+                            <a href="#" (click)="setEditPhone(i)"> <span class="glyphicon glyphicon-edit"></span> </a>
+                        </td>
                         <td>
-                            <a href="#" (click)="setDeletePhone(i)"> <span class="glyphicon glyphicon-remove-circle"></span> </a> </td>
+                            <a href="#" (click)="setDeletePhone(i)"> <span class="glyphicon glyphicon-remove-circle"></span> </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -59,32 +61,42 @@
 
 
         <div formGroupName="direccionesDT">
+
             <p>Agregar Direcciones</p>
-            <input type="text" formControlName="tipo" placeholder="Tipo" [(ngModel)]="tipo">
+            <input type="text" formControlName="tipo" placeholder="Tipo">
             <input type="text" formControlName="direccion" placeholder="Direccion" [(ngModel)]="direccion">
 
-            <button (click)="addDireccion(form)">Add Direccion</button>
+            <button (click)="addDireccion(form.value, form.valid)" class="btn btn-success">Add Direccion </button>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Tipo</th>
                         <th>Direccion</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let dir of direcciones">
+                    <tr *ngFor="let dir of direcciones let i= index">
+                        <td>{{dir.tipo}}</td>
+                        <td>{{dir.direccion}}</td>
+                        <td>
+                            <a href="#" (click)="setEditDireccion(i)"> <span class="glyphicon glyphicon-edit"></span> </a>
+                        </td>
+                        <td>
+                            <a href="#" (click)="setDeleteDireccion(i)"> <span class="glyphicon glyphicon-remove-circle"></span> </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
 
         </div>
 
-
-
         <button>Submit</button>
         <button (click)="setValores()">SetValues</button>
 
     </form>
     <p>Value: {{ form.value | json }}</p>
+    <p>Form: {{ form }}</p>
     <p>Validation status: {{ form.status }}</p>
 </div>
