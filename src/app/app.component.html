@@ -92,6 +92,30 @@
 
         </div>
 
+
+        <div class="form-group">
+            <label for="sel1">Lista de carros </label>
+            <select class="form-control" id="sel1" (change)="onChangeCarros($event.target.value)">
+                <option *ngFor="let i of carsList | MarcaCars ">{{i}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sel1">Modelo </label>
+            <select class="form-control" id="sel2" (change)="onChangeModelo($event.target.value)">
+                <option *ngFor="let i of modelsList | ModeloCars ">{{i}}</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="sel1">Select list 3 </label>
+            <select class="form-control" id="sel3">
+                <option *ngFor="let i of yearsList ">{{i.ano}}</option>
+            </select>
+        </div>
+
+
         <button>Submit</button>
         <button (click)="setValores()">SetValues</button>
 
